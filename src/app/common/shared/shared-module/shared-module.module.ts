@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 import { SharedLibsModule } from './shared-libs.module';
 import { SortDirective } from '../directive/sort.directive';
+import { SortByDirective } from '../directive/sort-by.directive';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SortDirective } from '../directive/sort.directive';
     SortDirective,
     ControlMessagesComponent,
     FormatTimePipe,
-    FormatDatePipe
+    FormatDatePipe,
+    SortByDirective
   ],
   exports: [
     SharedLibsModule,
@@ -25,7 +27,8 @@ import { SortDirective } from '../directive/sort.directive';
     SortDirective,
     ControlMessagesComponent,
     FormatTimePipe,
-    FormatDatePipe
+    FormatDatePipe,
+    SortByDirective
   ],
   imports: [
     SharedLibsModule,
