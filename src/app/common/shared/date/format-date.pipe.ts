@@ -1,4 +1,4 @@
-import { DATE_FORMAT } from '../../models/input.constants';
+import { DATE_FORMAT } from '../../config/input.constants';
 import { Pipe, PipeTransform } from '@angular/core';
 
 import * as dayjs from 'dayjs';

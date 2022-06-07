@@ -1,4 +1,4 @@
-import { fontAwesomeIcons } from './common/shared/model/font-awesome-icons';
+import { fontAwesomeIcons } from './common/config/font-awesome-icons';
 import { environment } from 'src/environments/environment';
 import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';

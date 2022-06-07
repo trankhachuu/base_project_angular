@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { SharedLibsModule } from './shared-libs.module';
 import { SortDirective } from '../directive/sort.directive';
 import { SortByDirective } from '../directive/sort-by.directive';
+import { FormatMediumDatePipe } from '../date/format-medium-date.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SortByDirective } from '../directive/sort-by.directive';
     ControlMessagesComponent,
     FormatTimePipe,
     FormatDatePipe,
-    SortByDirective
+    SortByDirective,
+    FormatMediumDatePipe
   ],
   exports: [
     SharedLibsModule,
@@ -28,7 +30,8 @@ import { SortByDirective } from '../directive/sort-by.directive';
     ControlMessagesComponent,
     FormatTimePipe,
     FormatDatePipe,
-    SortByDirective
+    SortByDirective,
+    FormatMediumDatePipe
   ],
   imports: [
     SharedLibsModule,
