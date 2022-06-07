@@ -6,7 +6,7 @@ import {
   HttpHandler,
   HttpEvent,
 } from '@angular/common/http';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../modules/auth/service/auth.service';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {

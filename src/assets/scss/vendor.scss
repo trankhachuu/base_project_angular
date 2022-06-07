@@ -1,0 +1,223 @@
+/* after changing this file run 'npm run webapp:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+// Override Bootstrap variables
+@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Rammetto+One:400,400i,700,700i');
+
+:root {
+  /* Colors: */
+  ---adb5bd-switch-borders: #adb5bd;
+  ---e9ecef-breadcrumbs-bg: #e9ecef;
+  ---92b06a-pp-2: #92b06a;
+  ---688f40-pp-1: #6a8e3d;
+  ---dee2e6-table-borders: #dee2e6;
+  ---ffffff-white: #ffffff;
+  ---000000-black: #000000;
+  ---212529-body-text: #212529;
+  ---343a40-dark: #343a40;
+  ---f8f9fa-light: #f8f9fa;
+  ---6c757d-secondary-placeholder-breadcrumbs-: #6c757d;
+  ---dc3545-danger: #dc3545;
+  ---ffc107-warning: #ffc107;
+  ---17a2b8-info: #17a2b8;
+  ---28a745-success: #28a745;
+  ---007bff-primary: #007bff;
+}
+
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */
+
+.cal-month-view .cal-day-cell.cal-today {
+  background-color: unset;
+
+  .cal-day-number {
+    font-size: 0.8em;
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
+
+.cal-month-view .cal-day-number {
+  font-size: 0.8em;
+  color: #000000;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 2px;
+  margin-top: 2px;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+  color: #000000;
+}
+
+.cal-week-view .cal-header {
+  cursor: pointer;
+  &.cal-today {
+    background-color: #000000;
+    color: #ffffff;
+    span {
+      opacity: 1;
+    }
+
+    &:hover {
+      color: #000000;
+    }
+  }
+}
+
+.cal-month-view .cal-day-badge {
+  background-color: #17a2b8;
+  white-space: unset;
+}
+
+.cal-week-view .cal-event {
+  color: #ffffff;
+}
+
+.cal-month-view .bg-unavailable-calendar,
+.cal-week-view .cal-day-columns .bg-unavailable-calendar,
+.cal-day-view .bg-unavailable-calendar {
+  background-color: #efefef !important;
+  .cal-day-badge {
+    &.ng-star-inserted {
+      display: none;
+    }
+  }
+
+  .ng-star-inserted {
+    .cal-day-badge {
+      display: none;
+    }
+  }
+}
+
+//.available-week {
+//  .cal-week-view * {
+//    .cal-event-title {
+//      //background-color: #007bff;
+//      padding: 3px 7px;
+//      border-radius: 10px !important;
+//    }
+//  }
+//}
+
+.cal-day-cell {
+  min-width: 0;
+}
+
+.long-and-truncated {
+  padding: 0 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+.disabled-date {
+  opacity: 0.5;
+  pointer-events: none;
+  background-color: #efefef;
+}
+
+.perk-icon {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  mask-position: 50%;
+  -webkit-mask-position: 50%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  position: relative;
+  display: inline-block;
+  width: 1.3333333em;
+  line-height: 1.5em;
+}
+.perk-icon:before {
+  content: '\00a0';
+}
+
+.perk-icon-close-rate {
+  mask-image: url('../../content/images/icons/close-rate.svg');
+  background-image: url('../../content/images/icons/close-rate.svg');
+  -webkit-mask-image: url('../../content/images/icons/close-rate.svg');
+  width: 64px;
+  height: 64px;
+}
+
+.perk-icon-completed-event {
+  mask-image: url('../../content/images/icons/completed-event.svg');
+  background-image: url('../../content/images/icons/completed-event.svg');
+  -webkit-mask-image: url('../../content/images/icons/completed-event.svg');
+  width: 64px;
+  height: 64px;
+}
+
+.perk-icon-gross-sale {
+  mask-image: url('../images/icons/gross-sale.svg');
+  background-image: url('../images/icons/gross-sale.svg');
+  -webkit-mask-image: url('../images/icons/gross-sale.svg');
+  width: 64px;
+  height: 64px;
+}
+
+.perk-icon-new-clients {
+  mask-image: url('../../content/images/icons/new-clients.svg');
+  background-image: url('../../content/images/icons/new-clients.svg');
+  -webkit-mask-image: url('../../content/images/icons/new-clients.svg');
+  width: 80px;
+  height: 80px;
+}
+
+.perk-icon-loading {
+  background-image: url('../../content/images/logo.png');
+}
+
+.cal-day-cell {
+  min-width: 0;
+}
+
+@media only screen and (max-width: 1800px) {
+  .number-statistic {
+    font-weight: bold !important;
+    font-size: 26px !important;
+  }
+}
+
+@media only screen and (max-width: 1800px) {
+  .card-text.text-secondary {
+    margin-right: 40px !important;
+  }
+}
+
+@media only screen and (max-width: 1650px) {
+  .number-statistic {
+    font-weight: bold !important;
+    font-size: 22px !important;
+  }
+}
+
+@media only screen and (max-width: 1580px) {
+  .number-statistic {
+    font-weight: bold !important;
+    font-size: 20px !important;
+  }
+}
+.card.statistic-item {
+  box-shadow: 2px 2px #cfd4d9 !important;
+  border-radius: 12px !important;
+  height: 100% !important;
+  padding: 5px 10px !important;
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g id="Icon" transform="translate(-849 -223)">
+        <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(849 223)" fill="#92b06a" stroke="#92b06a" stroke-width="1">
+            <circle cx="32" cy="32" r="32" stroke="none"/>
+            <circle cx="32" cy="32" r="31.5" fill="none"/>
+        </g>
+        <path id="cash-stack" d="M19733,275a2.01,2.01,0,0,1-2-2V257a2,2,0,0,1,2-2h28a2,2,0,0,1,2,2v16a2,2,0,0,1-2,2Zm0-14v8a4.007,4.007,0,0,1,4,4h20a4,4,0,0,1,4-4v-8a4,4,0,0,1-4-3.994h-20A4.005,4.005,0,0,1,19733,261Zm10,4a4,4,0,1,1,4,3.994A4,4,0,0,1,19743,265Zm-10-12a2,2,0,0,1,2-2h23.992a2,2,0,0,1,2,2Z" transform="translate(-18865.996 -8)" fill="#fff"/>
+    </g>
+</svg>

@@ -10,7 +10,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './common/shared/shared-module/shared-module.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

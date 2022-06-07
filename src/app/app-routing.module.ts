@@ -1,4 +1,4 @@
-import { errorRoute } from './modules/errors/router/error.route';
+import { errorRoute } from './layouts/router/error.route';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CanActivatePermission } from './common/guards/can-activate-permission';

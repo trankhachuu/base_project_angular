@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs';
 import { BaseDestroyableDirective } from 'src/app/common/abstract/base-destroyable';
 import { TypeResponse } from 'src/app/common/enum/type-reposone';
-import { AuthService } from 'src/app/common/services/auth.service';
+import { AuthService } from 'src/app/modules/auth/service/auth.service';
 
 @Component({
   selector: 'app-login',

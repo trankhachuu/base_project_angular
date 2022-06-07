@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule, 
     NgbModule, 
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
 ],
 })
 export class SharedLibsModule {}

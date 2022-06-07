@@ -1,11 +1,11 @@
-import { User } from './../models/user-login-model';
+import { User } from '../../../common/models/user-login-model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 import { Observable, ReplaySubject } from 'rxjs';
-import { IUser, IUserLoginResponse } from '../models/user-login-model';
+import { IUser, IUserLoginResponse } from '../../../common/models/user-login-model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

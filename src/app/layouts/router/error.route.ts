@@ -1,4 +1,4 @@
-import { ErrorComponent } from '../components/error/error.component';
+import { ErrorComponent } from '../error/error.component';
 import { Routes } from '@angular/router';
 
 
