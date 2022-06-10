@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseURlFake : 'http://localhost:4201:/',
-  baseURl : ''
+  baseURl : '',
+  currentURL : 'localhost:4201:'
 };
 
 /*

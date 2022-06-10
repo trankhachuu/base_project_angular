@@ -1,3 +1,4 @@
+import { Authority } from './common/enum/authority.constants';
 import { errorRoute } from './layouts/router/error.route';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,9 +12,19 @@ const routes: Routes = [
   },
   {
     path: '',
+    loadChildren: () => import('./modules/auth/auth-routing/auth.module').then(m => m.AuthModule),
+    data: {
+      requireLogin: false,
+      authorities : ['']
+    },
+    canActivate: [CanActivatePermission]
+  },
+  {
+    path: '',
     loadChildren: () => import('./layouts/layout-module/auth-layout.module').then(m => m.AuthLayoutModule),
     data: {
-      requireLogin: false
+      requireLogin: true,
+      authorities : [Authority.USER]
     },
     canActivate: [CanActivatePermission]
   },
@@ -21,7 +32,8 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./layouts/addmin-layout-module/admin-layout.module').then(m => m.AddminLayoutModule),
     data: {
-      requireLogin: true
+      requireLogin: true,
+      authorities : [Authority.ADMIN]
     },
     canActivate: [CanActivatePermission]
   },

@@ -1,3 +1,7 @@
+import { TypeResponse } from './../enum/type-reposone';
+import { environment } from 'src/environments/environment';
+import { ApplicationConfigService } from './../config/application-config.service';
+import { User } from './../models/user-login-model';
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -11,12 +15,13 @@ import {
   HttpHandler,
   HttpEvent,
 } from '@angular/common/http';
+import { TypeHttpMethod } from '../enum/type-http-method';
 
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
   private usersData = usersData;
 
-  constructor() { }
+  constructor(private applicationConfigService: ApplicationConfigService) { }
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -24,29 +29,31 @@ export class BackendInterceptor implements HttpInterceptor {
     const { url, method } = request;
     let newHttpResponse = new Observable<HttpResponse<any>>();
     const typeResponse = url.split('/');
-    if (typeResponse[2] === 'localhost:4201:'){
+    if (typeResponse[2] === environment.currentURL){
       switch (true) {
-        case method === 'GET' && url === 'http://localhost:4201:/users':
+        case method === TypeHttpMethod.GET && url === this.applicationConfigService.getEndpointFor('users'):
           newHttpResponse = of(
-            new HttpResponse({ status: 200, body: { status: 'SUCCESS', users: [...usersData] }})
+            new HttpResponse({ status: 200, body: { status: TypeResponse.Success, users: [...usersData] }})
           ).pipe(delay(500));
           break;
-        case method === 'POST' && url === 'http://localhost:4201:/user':
+        case method === TypeHttpMethod.POST && url === this.applicationConfigService.getEndpointFor('user'):
           newHttpResponse = this.addUser(request);
           break;
-        case method === 'PUT' && url === 'http://localhost:4201:/user':
+        case method === TypeHttpMethod.PUT && url === this.applicationConfigService.getEndpointFor('user'):
           newHttpResponse = this.editUser(request);
           break;
-        case method === 'GET' && url.match(/\/user\/\d+$/) != null:
+        case method === TypeHttpMethod.GET && url.match(/\/user\/\d+$/) != null:
           newHttpResponse = this.getUserById(request);
           break;
-        case method === 'DELETE' && url.match(/\/user\/\d+$/) != null:
+        case method === TypeHttpMethod.DELETE && url.match(/\/user\/\d+$/) != null:
           newHttpResponse = this.deletetUser(request);
           break;
-        case method === 'POST' && url === 'http://localhost:4201:/login':
+        case method === TypeHttpMethod.POST && url === this.applicationConfigService.getEndpointFor('login'):
           newHttpResponse = this.login(request);
           break;
-        
+        case method === TypeHttpMethod.GET && url === this.applicationConfigService.getEndpointFor('user'):
+            newHttpResponse = this.getUser();
+            break;
         default:
           break;
       }
@@ -65,7 +72,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
     if (user) {
       return of(
-        new HttpResponse({ status: 200, body: { status: 'SUCCESS', user: {...user}, token: user.accessToken } })
+        new HttpResponse({ status: 200, body: { status: TypeResponse.Success, user: {...user}, token: user.accessToken } })
       ).pipe(delay(500));
     }
     else {
@@ -73,8 +80,29 @@ export class BackendInterceptor implements HttpInterceptor {
         new HttpResponse({
           status: 200,
           body: {
-            status: 'ERROR',
+            status: TypeResponse.Error,
             message: 'user name or password incorrect',
+          },
+        })
+      ).pipe(delay(500));
+    }
+  }
+
+  private getUser(): Observable<HttpResponse<any>> {
+    const user: User = JSON.parse(localStorage.getItem('access_token') as string) as User;
+
+    if (user) {
+      return of(
+        new HttpResponse({ status: 200, body: { status: TypeResponse.Success, user: {...user}, token: user.accessToken } })
+      ).pipe(delay(500));
+    }
+    else {
+      return of(
+        new HttpResponse({
+          status: 200,
+          body: {
+            status: TypeResponse.Error,
+            message: 'user incorrect',
           },
         })
       ).pipe(delay(500));
@@ -88,7 +116,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
     if (user) {
       return of(
-        new HttpResponse({ status: 200, body: { status: 'SUCCESS', user: {...user}} })
+        new HttpResponse({ status: 200, body: { status: TypeResponse.Success, user: {...user}} })
       ).pipe(delay(500));
     }
     else {
@@ -96,7 +124,7 @@ export class BackendInterceptor implements HttpInterceptor {
         new HttpResponse({
           status: 400,
           body: {
-            status: 'ERROR',
+            status: TypeResponse.Error,
             message: 'Bad Request',
           },
         })
@@ -118,10 +146,10 @@ export class BackendInterceptor implements HttpInterceptor {
       user.imgURL = userData.imgURL;
       user.name = userData.name;
       user.password = userData.password;
-      user.type = userData.type;
+      user.authorities = userData.authorities;
 
       return of(
-        new HttpResponse({ status: 200, body: { status: 'SUCCESS', user: {...user}} })
+        new HttpResponse({ status: 200, body: { status: TypeResponse.Success, user: {...user}} })
       ).pipe(delay(500));
     }
     else {
@@ -129,7 +157,7 @@ export class BackendInterceptor implements HttpInterceptor {
         new HttpResponse({
           status: 400,
           body: {
-            status: 'ERROR',
+            status: TypeResponse.Error,
             message: 'Bad Request',
           },
         })
@@ -146,7 +174,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
     if (user) {
       return of(
-        new HttpResponse({ status: 200, body: { status: 'SUCCESS', user: {...user}} })
+        new HttpResponse({ status: 200, body: { status: TypeResponse.Success, user: {...user}} })
       ).pipe(delay(500));
     }
     else {
@@ -154,7 +182,7 @@ export class BackendInterceptor implements HttpInterceptor {
         new HttpResponse({
           status: 400,
           body: {
-            status: 'ERROR',
+            status: TypeResponse.Error,
             message: 'Bad Request',
           },
         })
@@ -173,7 +201,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
     if (indexUser >=0) {
       return of(
-        new HttpResponse({ status: 200, body: { status: 'SUCCESS' } })
+        new HttpResponse({ status: 200, body: { status: TypeResponse.Success } })
       ).pipe(delay(500));
     }
     else {
@@ -181,7 +209,7 @@ export class BackendInterceptor implements HttpInterceptor {
         new HttpResponse({
           status: 400,
           body: {
-            status: 'ERROR',
+            status: TypeResponse.Error,
             message: 'Bad Request',
           },
         })
